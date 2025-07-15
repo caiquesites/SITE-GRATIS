@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CriaFacil.ai - Gerador Completo</title>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    background: #f0f2f5;
+    margin: 0; padding: 0;
+    color: #222;
+  }
+  #tela-inicial, #tela-gerador {
+    max-width: 700px;
+    margin: 40px auto;
+    background: white;
+    padding: 20px 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  }
+  h1 {
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .btn {
+    display: inline-block;
+    padding: 14px 25px;
+    font-weight: bold;
+    font-size: 18px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    width: 100%;
+  }
+  .btn:hover {
+    background: #0056b3;
+  }
+  label {
+    font-weight: bold;
+    margin-top: 20px;
+    display: block;
+  }
+  input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    resize: vertical;
+  }
+  textarea {
+    min-height: 100px;
+  }
+  .output {
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 15px;
+    margin-top: 12px;
+    white-space: pre-wrap;
+    min-height: 120px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+  }
+  #imagem-gerada {
+    display: block;
+    max-width: 100%;
+    margin-top: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  #termos {
+    font-size: 14px;
+    color: #555;
+    margin-top: 30px;
+    line-height: 1.4;
+  }
+  #termos strong {
+    color: #222;
+  }
+  #voltar-btn {
+    margin-top: 30px;
+    background: #6c757d;
+  }
+  footer {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    padding-top: 12px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Tela Inicial -->
+<div id="tela-inicial">
+  <h1>Bem-vindo ao CriaFacil.ai</h1>
+  <p>Antes de usar o gerador, leia e concorde com os termos do site.</p>
+  <div id="termos">
+    <p><strong>Termos de uso:</strong> Este site gera ideias, descrições e imagens aleatórias para ajudar na criação de conteúdo. As imagens são obtidas de fontes externas e podem variar. Use com responsabilidade e para fins legais. Não garantimos resultados profissionais ou personalizados.</p>
+  </div>
+  <button class="btn" id="btn-concordo">Concordo com os termos e quero usar</button>
+</div>
+
+<!-- Tela Gerador -->
+<div id="tela-gerador" style="display:none;">
+  <h1>CriaFacil.ai - Gerador Completo</h1>
+
+  <!-- Gerador de Ideias -->
+  <label for="temaIdeia">Tema para gerar ideias de vídeo:</label>
+  <input id="temaIdeia" type="text" placeholder="Ex: futebol, culinária, tecnologia..." />
+  <button class="btn" onclick="gerarIdeia()">Gerar Ideias</button>
+  <div id="saidaIdeia" class="output"></div>
+
+  <!-- Gerador de Descrição -->
+  <label for="temaDescricao">Digite a ideia para gerar descrição:</label>
+  <textarea id="temaDescricao" placeholder="Ex: Ideia sobre futebol"></textarea>
+  <button class="btn" onclick="gerarDescricao()">Gerar Descrição</button>
+  <div id="saidaDescricao" class="output"></div>
+
+  <!-- Gerador de Imagens -->
+  <label for="temaImagem">Tema para gerar imagem (opcional):</label>
+  <input id="temaImagem" type="text" placeholder="Ex: praia, comida, natureza..." />
+  <button class="btn" onclick="gerarImagem()">Gerar Imagem</button>
+  <img id="imagemGerada" alt="Imagem gerada" />
+
+  <button class="btn" id="voltar-btn" onclick="voltarTelaInicial()">Voltar à tela inicial</button>
+
+  <div id="termos" style="margin-top: 40px; font-size: 13px; color: #555;">
+    <p><strong>Termos de uso:</strong> As ideias, descrições e imagens geradas são para uso auxiliar e podem não ser 100% precisas ou exclusivas. Use com responsabilidade.</p>
+  </div>
+
+  <footer>
+    Todos os direitos reservados © criafacil.ai &nbsp;&nbsp;&nbsp; @caiquetrenzinhos
+  </footer>
+</div>
+
+<script>
+  // Trocar telas
+  document.getElementById('btn-concordo').addEventListener('click', () => {
+    document.getElementById('tela-inicial').style.display = 'none';
+    document.getElementById('tela-gerador').style.display = 'block';
+  });
+
+  function gerarIdeia() {
+    const tema = document.getElementById('temaIdeia').value.trim();
+    const saida = document.getElementById('saidaIdeia');
+    if (!tema) {
+      alert('Digite um tema!');
+      return;
+    }
+
+    const titulos = [
+      `Top dicas sobre ${tema} para arrasar`,
+      `Guia completo de ${tema} para iniciantes`,
+      `Como dominar ${tema} em 5 passos`,
+      `Segredos pouco conhecidos de ${tema}`,
+      `O que ninguém te contou sobre ${tema}`
+    ];
+    const oqueFazer = [
+      `No vídeo, vamos explicar os conceitos básicos de ${tema} de forma simples e clara.`,
+      `Você vai aprender técnicas avançadas para melhorar seu desempenho em ${tema}.`,
+      `Mostraremos exemplos práticos e dicas essenciais para quem quer começar em ${tema}.`,
+      `Vamos desvendar os maiores mitos e verdades sobre ${tema}.`,
+      `Apresentaremos as ferramentas e recursos que facilitam o aprendizado de ${tema}.`
+    ];
+
+    const titulo = titulos[Math.floor(Math.random() * titulos.length)];
+    const passo = oqueFazer[Math.floor(Math.random() * oqueFazer.length)];
+
+    const texto = `🎬 Título do Vídeo:\n${titulo}\n\n📌 O que fazer no vídeo:\n${passo}`;
+    saida.textContent = texto;
+  }
+
+  function gerarDescricao() {
+    const ideia = document.getElementById('temaDescricao').value.trim();
+    const saida = document.getElementById('saidaDescricao');
+    if (!ideia) {
+      alert('Digite uma ideia para gerar descrição!');
+      return;
+    }
+    const hashtags = `#${ideia.replace(/\s+/g, '')} #dicas #tutorial #aprendizado #criafacilai`;
+    const descricao = `Neste vídeo, vamos explorar "${ideia}" de forma detalhada, trazendo informações, dicas e curiosidades para você aproveitar ao máximo.\n\n` +
+                      `Abordaremos desde o básico até técnicas que vão te ajudar a se destacar no assunto.\n\n` +
+                      `Não esqueça de curtir, compartilhar e se inscrever para mais vídeos incríveis!\n\n` +
+                      `${hashtags}`;
+    saida.textContent = descricao;
+  }
+
+  function gerarImagem() {
+    const temaImg = document.getElementById('temaImagem').value.trim() || 'natureza';
+    const img = document.getElementById('imagemGerada');
+    // Usar Unsplash API para imagem aleatória do tema
+    img.src = `https://source.unsplash.com/600x400/?${encodeURIComponent(temaImg)}`;
+  }
+
+  function voltarTelaInicial() {
+    document.getElementById('tela-gerador').style.display = 'none';
+    document.getElementById('tela-inicial').style.display = 'block';
+
+    // Limpar campos e outputs
+    document.getElementById('temaIdeia').value = '';
+    document.getElementById('saidaIdeia').textContent = '';
+    document.getElementById('temaDescricao').value = '';
+    document.getElementById('saidaDescricao').textContent = '';
+    document.getElementById('temaImagem').value = '';
+    document.getElementById('imagemGerada').src = '';
+  }
+</script>
+
+</body>
+</html>
