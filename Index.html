@@ -162,24 +162,24 @@
     }
 
     const titulos = [
-      `Top dicas sobre ${tema} para arrasar`,
-      `Guia completo de ${tema} para iniciantes`,
-      `Como dominar ${tema} em 5 passos`,
-      `Segredos pouco conhecidos de ${tema}`,
-      `O que ninguém te contou sobre ${tema}`
+      Top dicas sobre ${tema} para arrasar,
+      Guia completo de ${tema} para iniciantes,
+      Como dominar ${tema} em 5 passos,
+      Segredos pouco conhecidos de ${tema},
+      O que ninguém te contou sobre ${tema}
     ];
     const oqueFazer = [
-      `No vídeo, vamos explicar os conceitos básicos de ${tema} de forma simples e clara.`,
-      `Você vai aprender técnicas avançadas para melhorar seu desempenho em ${tema}.`,
-      `Mostraremos exemplos práticos e dicas essenciais para quem quer começar em ${tema}.`,
-      `Vamos desvendar os maiores mitos e verdades sobre ${tema}.`,
-      `Apresentaremos as ferramentas e recursos que facilitam o aprendizado de ${tema}.`
+      No vídeo, vamos explicar os conceitos básicos de ${tema} de forma simples e clara.,
+      Você vai aprender técnicas avançadas para melhorar seu desempenho em ${tema}.,
+      Mostraremos exemplos práticos e dicas essenciais para quem quer começar em ${tema}.,
+      Vamos desvendar os maiores mitos e verdades sobre ${tema}.,
+      Apresentaremos as ferramentas e recursos que facilitam o aprendizado de ${tema}.
     ];
 
     const titulo = titulos[Math.floor(Math.random() * titulos.length)];
     const passo = oqueFazer[Math.floor(Math.random() * oqueFazer.length)];
 
-    const texto = `🎬 Título do Vídeo:\n${titulo}\n\n📌 O que fazer no vídeo:\n${passo}`;
+    const texto = 🎬 Título do Vídeo:\n${titulo}\n\n📌 O que fazer no vídeo:\n${passo};
     saida.textContent = texto;
   }
 
@@ -190,11 +190,11 @@
       alert('Digite uma ideia para gerar descrição!');
       return;
     }
-    const hashtags = `#${ideia.replace(/\s+/g, '')} #dicas #tutorial #aprendizado #criafacilai`;
-    const descricao = `Neste vídeo, vamos explorar "${ideia}" de forma detalhada, trazendo informações, dicas e curiosidades para você aproveitar ao máximo.\n\n` +
-                      `Abordaremos desde o básico até técnicas que vão te ajudar a se destacar no assunto.\n\n` +
-                      `Não esqueça de curtir, compartilhar e se inscrever para mais vídeos incríveis!\n\n` +
-                      `${hashtags}`;
+    const hashtags = #${ideia.replace(/\s+/g, '')} #dicas #tutorial #aprendizado #criafacilai;
+    const descricao = Neste vídeo, vamos explorar "${ideia}" de forma detalhada, trazendo informações, dicas e curiosidades para você aproveitar ao máximo.\n\n +
+                      Abordaremos desde o básico até técnicas que vão te ajudar a se destacar no assunto.\n\n +
+                      Não esqueça de curtir, compartilhar e se inscrever para mais vídeos incríveis!\n\n +
+                      ${hashtags};
     saida.textContent = descricao;
   }
 
@@ -202,7 +202,7 @@
     const temaImg = document.getElementById('temaImagem').value.trim() || 'natureza';
     const img = document.getElementById('imagemGerada');
     // Usar Unsplash API para imagem aleatória do tema
-    img.src = `https://source.unsplash.com/600x400/?${encodeURIComponent(temaImg)}`;
+    img.src = https://source.unsplash.com/600x400/?${encodeURIComponent(temaImg)};
   }
 
   function voltarTelaInicial() {
